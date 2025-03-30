@@ -1,7 +1,7 @@
 import type {
   EntitySubscriberInterface,
   InsertEvent,
-  UpdateEvent,
+  // UpdateEvent,
 } from 'typeorm';
 import { EventSubscriber } from 'typeorm';
 
