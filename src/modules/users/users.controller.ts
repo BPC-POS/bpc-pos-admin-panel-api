@@ -12,6 +12,8 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto, UpdateUserDto } from './dto/index.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { User } from '../../database/entities';
+import { ReqUser } from '../../decorators/user.decorator';
 
 @ApiTags('Users')
 @Controller('users')
@@ -81,6 +83,28 @@ export class UsersController {
           },
         },
         HttpStatus.NOT_FOUND,
+      );
+    }
+  }
+
+  @Patch('me')
+  async updateMe(@ReqUser() user: User, @Body() updateUserDto: UpdateUserDto) {
+    try {
+      const result = await this.usersService.update(+user.id, updateUserDto);
+      return {
+        success: true,
+        payload: result,
+      };
+    } catch (error) {
+      throw new HttpException(
+        {
+          success: false,
+          error: {
+            code: HttpStatus.BAD_REQUEST,
+            message: (error as any).message,
+          },
+        },
+        HttpStatus.BAD_REQUEST,
       );
     }
   }

@@ -20,12 +20,12 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
     }
   }
 
-  beforeUpdate(event: UpdateEvent<User>): void {
-    // FIXME check event.databaseEntity.password
-    const entity = event.entity as User;
+  // beforeUpdate(event: UpdateEvent<User>): void {
+  //   // FIXME check event.databaseEntity.password
+  //   const entity = event.entity as User;
 
-    if (entity.password !== event.databaseEntity.password) {
-      entity.password = generateHash(entity.password!);
-    }
-  }
+  //   if (entity.password !== event.databaseEntity.password) {
+  //     entity.password = generateHash(entity.password!);
+  //   }
+  // }
 }
