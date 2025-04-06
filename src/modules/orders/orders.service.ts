@@ -504,7 +504,7 @@ export class OrdersService {
       const accountNo = '101877496008'; // Your account number
       const template = 'compact2';
       const accountName = 'BPC%20POS%20SYSTEM';
-      const description = `Payment%20for%20order%20${order.id}`;
+      const description = `SEVQR%20Payment%20for%20order%20${order.id}`;
 
       const qrCodeUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-${template}.png?amount=${order.total_amount}&addInfo=${description}&accountName=${accountName}`;
 
